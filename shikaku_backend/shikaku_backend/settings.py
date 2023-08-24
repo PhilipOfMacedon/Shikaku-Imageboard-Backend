@@ -25,19 +25,35 @@ SECRET_KEY = 'django-insecure-a&fzkbdk3rmj!ftbjc5zr*b#v8w5g2dii5yke9s(dqpi7-c_k(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Third-Party Apps
+    'rest_framework',
+    'rest_framework.authtoken',
+    'django_rest_passwordreset',
+    
+    #Local Apps
+    'core',
+    'playground',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
